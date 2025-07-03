@@ -24,3 +24,50 @@
 - Useof regex in routes /a/ ,/.\*fly$/
 - Reading the query parmas in the routes
 - Reading the Dynamic Routes in the routes
+
+- create a free cluster on mongodb official website(MOngo Atlasa )
+- install mongoose library
+- connect your application to database <"Conection url">/devTinder
+- call connectDb function and connectto database beforestarting your application on 3000
+- create a userSchema & Model
+- create /signup Api to add data to databse
+- push some documents suing API calls from postman
+- Error handling using try, catch
+- Js Object VS JSON Data
+- add the express.json middleware to your app
+- make your singup API dynamic to recive data from end user
+- user.findOne with duplicate email ids, which object will it find and returned
+- get user by email
+- get all the user using feed api
+- create an api get By ID
+- create delete api using findByIdAndDelete
+- diff PATCH AND PUT
+- Api - update a user
+- explore the mongoose documnets for model
+- what are options in a model.findOneAndUpdate api
+- Api - Update the user using email ID
+- explore schema type options from the documents
+- add requird ,unique,lowercase and uppercase, min,minlenth, maxlenth, max, default,trim, create a custom validate function for gender
+- improve the db schema put all the appropriate validations on each field in schema
+- add timestamps to the schema
+- Add api level validation on patch api and signup api
+- Data Sanitizarion -add api validations for each field
+- install the validator
+- explore the valitdaor libarey password, email, phtourl
+- never trust req.body
+- validate the signup data with util/validator.js
+- install bcrypt
+- create passwordhash using bcrypt.hash & save the user with encrypted password
+- create login api
+- compare passwords and throw errors if email or passwords is invalid
+- Install Cookie-Parser
+- Jsut send a dummy cookie to user
+- create get/profile api and check if you get cookie back
+- install jwt jsonwebtoken
+- in Login api, after email and password validation, create a jwt token and send it user in cookies
+- read the cookies inside your profile API and find the logged in user
+- userAuth middleware
+- Add the userauth middleware in profile api and new connectionrequestapi
+- set the expiry of jwt token and cookies to 7 days
+- create userscema method to getJWt()
+- create userschema method to comparePassword(passwordInputByUser)

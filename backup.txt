@@ -23,3 +23,93 @@ app.get("/user/:userId", (req, res) => {
 // app.use("/test", (req, res) => {
 //   res.send("Hello from the server!");
 // });
+
+
+
+// get user by emailId
+app.get("/user", async (req, res) => {
+  const userEmail = req.body.emailId;
+  try {
+    const user = await User.findOne({ emailId: userEmail });
+    if (!user) {
+      res.status(404).send("User not found!");
+    }
+    res.send(user);
+  } catch (err) {
+    res.status(400).send("Something Went wrong :" + err);
+  }
+  // try {
+  //   const user = await User.find({ emailId: userEmail });
+  //   if (user.length === 0) {
+  //     res.status(404).send("User not found!");
+  //   }
+  //   res.send(user);
+  // } catch (err) {
+  //   res.status(400).send("Something Went wrong :" + err);
+  // }
+});
+// Feed API => GET /feed get all the users from the database
+
+app.get("/feed", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.send(users);
+  } catch (err) {
+    res.status(400).send("Something Went wrong :" + err);
+  }
+});
+
+// get Api using Id
+
+app.get("/user/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send("User not found!");
+    }
+    res.send(user);
+  } catch (err) {
+    res.status(400).send("Something Went wrong :" + err);
+  }
+});
+
+app.delete("/user", async (req, res) => {
+  const userId = req.body.userId;
+  try {
+    const user = await User.findByIdAndDelete(userId);
+    if (!user) {
+      return res.status(404).send("User not found!");
+    }
+    res.send("User deleted successfully");
+  } catch (err) {
+    res.status(400).send("Something Went wrong :" + err);
+  }
+});
+// update user by Id
+app.patch("/user/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const updateData = req.body;
+  try {
+    const allowedUpdates = ["age", "gender", "photoUrl", "about", "skills"];
+    const isUpdateAllowed = Object.keys(updateData).every((key) =>
+      allowedUpdates.includes(key)
+    );
+    if (!isUpdateAllowed) {
+      throw new Error("Invalid updates!");
+    }
+    if (updateData?.skills.length > 10) {
+      throw new Error("Skills cannot be more than 10!");
+    }
+    const user = await User.findByIdAndUpdate(userId, updateData, {
+      returnDocument: "before",
+      runValidators: true,
+    });
+    if (!user) {
+      return res.status(404).send("User not found!");
+    }
+    res.send(user);
+  } catch (err) {
+    res.status(400).send("Something Went wrong :" + err);
+  }
+});
