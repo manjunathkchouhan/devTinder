@@ -71,3 +71,31 @@
 - set the expiry of jwt token and cookies to 7 days
 - create userscema method to getJWt()
 - create userschema method to comparePassword(passwordInputByUser)
+
+---
+
+- Explore tinder apis
+- create a list of all api you can think of dev api
+- group multiple routes under respective routes
+
+- Explore read documnetaion for express router
+- create routes folder for managing auth, profile, request routers
+- create authrouter ,ProfileRouter, requestRouter
+- import those routers in app.js
+
+- Create Post/ Logout api
+- create Patch /profile/edit
+- create PAtch /profile/password api => forgot password api
+- make sure validate all data in every post patch api
+
+- Create a connection request schema,
+- Send connection request API
+- add proper validation of data
+- Think about all corner cases and handel then
+- $Or query Read more
+- Scchema.Pre("Save);
+- Read more about indexes in mongodb
+- Read more about this url https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
+- Why do we need indexs
+- What is the advantage and disadvantage of creating indexs
+- Alwasys Think about corner cases

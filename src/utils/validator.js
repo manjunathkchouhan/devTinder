@@ -37,7 +37,23 @@ const validateSignUpData = (req) => {
   //     throw new Error("Invalid skills");
   //   }
 };
+const validateEditProfileData = (req) => {
+  const editAllowedFields = [
+    "firstName",
+    "lastName",
+    "age",
+    "gender",
+    "photoUrl",
+    "about",
+    "skills",
+  ];
+  const isEditAllowed = Object.keys(req.body).every((key) =>
+    editAllowedFields.includes(key)
+  );
+  return isEditAllowed;
+};
 
 module.exports = {
   validateSignUpData,
+  validateEditProfileData,
 };
